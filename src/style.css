@@ -1,0 +1,618 @@
+* {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #333; /* Secondary: black-gray */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+        }
+
+        /* ===== COUNTDOWN TO FULL - STACK ===== */
+        .countdown-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    transform: scale(0.7); /* 🔥 ini aja ganti ke 0.7 biar jauh lebih kecil */
+    transform-origin: top center; /* biar ngecilnya dari atas */
+}
+
+
+
+        .countdown-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .countdown-subtitle {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        /* Progress bar */
+        #progress-bar {
+            position: relative;
+            height: 16px;
+            width: 100%;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        #progress {
+            position: relative;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00C9FF, #92FE9D);
+            transition: width 1s ease;
+            border-radius: 10px;
+        }
+
+        /* Inline percentage label */
+        #progress-label {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+            white-space: nowrap;
+            transition: left 1s ease;
+            pointer-events: none;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .time-unit {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px 10px;
+            min-width: 80px;
+            flex: 1;
+        }
+
+        .time-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            animation: pulse 1.2s infinite ease-in-out alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .complete-message {
+            font-size: 1.5rem;
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 480px) {
+            .countdown-container {
+                padding: 30px 20px;
+            }
+            
+            .countdown-title {
+                font-size: 1.5rem;
+            }
+            
+            .time-value {
+                font-size: 2rem;
+            }
+            
+            .countdown-timer {
+                gap: 10px;
+            }
+        }
+
+        /* Light Mode (default) */
+        .light-mode {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .light-mode .text-muted {
+            color: #6c757d !important;
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            background-color: #121212; /* Modern dark theme */
+            color: #e9ecef;
+        }
+
+        .dark-mode .text-muted {
+            color: #adb5bd !important;
+        }
+
+        .dark-mode .link-btn {
+            background: linear-gradient(135deg, #0d6efd, #20c997); /* Turquoise gradient in dark */
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-mode .link-btn:hover {
+            box-shadow: 0 4px 20px rgba(13, 110, 253, 0.4); /* Blue glow */
+        }
+
+        /* Subtle Animated Gradient Background (blue → turquoise, slow movement) */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #0d6efd, #20c997, #0dcaf0, #17a2b8);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            z-index: -1;
+            opacity: 0.08; /* Very subtle for elegance */
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Content Wrapper */
+        .content {
+            z-index: 1;
+            position: relative;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .content.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Profile Section */
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .name {
+            font-weight: 600;
+            font-size: 1.8rem;
+            margin: 0;
+            color: inherit;
+        }
+
+        .bio {
+            font-size: 1rem;
+            font-weight: 300;
+            max-width: 280px;
+            margin: 0 auto 0.5rem;
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        /* Uniform Link Buttons: Consistent card-like style with icon, hover lift + glow */
+        .link-btn {
+            font-size: 1rem;
+            padding: 12px 16px;
+            border-radius: 14px; /* Rounded corners */
+            background: linear-gradient(135deg, #0d6efd, #20c997); /* Sky blue → turquoise gradient */
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+            border: none;
+            width: 100%;
+            text-align: left;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-weight: 400;
+            display: block; /* Ensures full width */
+        }
+
+        .link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(13, 110, 253, 0.3); /* Glow effect */
+            color: #fff !important;
+            text-decoration: none;
+            background: linear-gradient(135deg, #20c997, #0d6efd); /* Reverse gradient on hover */
+        }
+
+        .link-btn i {
+            font-size: 1.2rem;
+            width: 24px; /* Equal width for icons */
+        }
+
+        .link-btn:active {
+            transform: translateY(0); /* Press effect */
+        }
+
+        /* Links List: Consistent spacing (16px gap) */
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px; /* Consistent gap between buttons */
+        }
+
+        /* Footer */
+        .footer {
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        /* Mode Toggle Button: Fixed, elegant rounded */
+        .mode-toggle {
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: #333;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .mode-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .mode-toggle {
+            color: #e9ecef;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .dark-mode .mode-toggle:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Intro Animations: Staggered fade-in (profile first, then links) */
+        .animate-on-load {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .content.loaded .profile {
+            transition-delay: 0.2s;
+        }
+
+        .content.loaded .links-list {
+            transition-delay: 0.4s;
+        }
+
+        .content.loaded .footer {
+            transition-delay: 0.6s;
+        }
+
+        .content.loaded .animate-on-load {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Adjustments: Mobile-first - Enhanced for all devices to make it smaller and more centered like Linktree */
+        /* Extra Small Devices (phones, <576px) - Compact, narrow, full center */
+        @media (max-width: 575.98px) {
+            .content {
+                max-width: 320px; /* Smaller max-width for mobile, like Linktree */
+                padding: 0 10px; /* Tight padding */
+            }
+            
+            .profile-img {
+                width: 100px;
+                height: 100px; /* Smaller profile image */
+            }
+            
+            .name {
+                font-size: 1.5rem; /* Smaller name font */
+            }
+            
+            .bio {
+                font-size: 0.9rem; /* Smaller bio */
+                max-width: 250px;
+            }
+            
+            .tagline {
+                font-size: 0.8rem; /* Smaller tagline */
+            }
+            
+            .link-btn {
+                font-size: 0.95rem; /* Slightly smaller button text */
+                padding: 10px 14px; /* Tighter padding */
+                gap: 12px; /* Smaller gap inside buttons */
+            }
+            
+            .link-btn i {
+                font-size: 1.1rem; /* Smaller icons */
+                width: 20px;
+            }
+            
+            .links-list {
+                gap: 12px; /* Smaller gap between buttons */
+            }
+            
+            .footer {
+                font-size: 0.8rem; /* Smaller footer */
+                padding: 8px 0;
+            }
+            
+            .mode-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+                bottom: 15px;
+                right: 15px; /* Adjust position for small screens */
+            }
+        }
+
+        /* Small Devices (tablets portrait, 576px - 767.98px) - Slightly larger but still compact */
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            .content {
+                max-width: 350px; /* Narrower than before */
+                padding: 0 15px;
+            }
+            
+            .profile-img {
+                width: 110px;
+                height: 110px;
+            }
+            
+            .name {
+                font-size: 1.7rem;
+            }
+            
+            .bio {
+                font-size: 0.95rem;
+                max-width: 260px;
+            }
+            
+            .tagline {
+                font-size: 0.82rem;
+            }
+            
+            .link-btn {
+                font-size: 1rem;
+                padding: 11px 15px;
+            }
+            
+            .link-btn i {
+                font-size: 1.15rem;
+                width: 22px;
+            }
+            
+            .links-list {
+                gap: 14px;
+            }
+            
+            .footer {
+                font-size: 0.85rem;
+                padding: 9px 0;
+            }
+            
+            .mode-toggle {
+                width: 48px;
+                height: 48px;
+                font-size: 1.15rem;
+                bottom: 18px;
+                right: 18px;
+            }
+        }
+
+        /* Medium Devices (tablets landscape/small desktops, 768px - 991.98px) - Balanced size */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .content {
+                max-width: 380px; /* Compact for tablets */
+                padding: 0 20px;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .name {
+                font-size: 1.9rem;
+            }
+            
+            .bio {
+                font-size: 1rem;
+                max-width: 270px;
+            }
+            
+            .tagline {
+                font-size: 0.85rem;
+            }
+            
+            .link-btn {
+                font-size: 1.02rem;
+                padding: 12px 16px;
+            }
+            
+            .link-btn i {
+                font-size: 1.2rem;
+                width: 24px;
+            }
+            
+            .links-list {
+                gap: 15px;
+            }
+            
+            .footer {
+                font-size: 0.9rem;
+                padding: 10px 0;
+            }
+            
+            .mode-toggle {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Large Devices (desktops, 992px - 1199.98px) - Standard desktop view */
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            .content {
+                max-width: 400px; /* Keep original but ensure centering */
+                padding: 0 25px;
+            }
+            
+            .profile-img {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .bio {
+                font-size: 1.05rem;
+                max-width: 280px;
+            }
+            
+            .tagline {
+                font-size: 0.88rem;
+            }
+            
+            .link-btn {
+                font-size: 1.05rem;
+                padding: 13px 18px;
+            }
+            
+            .link-btn i {
+                font-size: 1.25rem;
+                width: 25px;
+            }
+            
+            .links-list {
+                gap: 16px;
+            }
+            
+            .footer {
+                font-size: 0.95rem;
+                padding: 12px 0;
+            }
+            
+            .mode-toggle {
+                width: 52px;
+                height: 52px;
+                font-size: 1.25rem;
+                bottom: 22px;
+                right: 22px;
+            }
+        }
+
+        /* Extra Large Devices (large desktops, 1200px+) - Wider but still centered and not too big */
+        @media (min-width: 1200px) {
+            .content {
+                max-width: 420px; /* Slightly wider for big screens, but compact like Linktree */
+                padding: 0 30px;
+            }
+            
+            .profile-img {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .name {
+                font-size: 2.2rem;
+            }
+            
+            .bio {
+                font-size: 1.1rem;
+                max-width: 300px;
+            }
+            
+            .tagline {
+                font-size: 0.9rem;
+            }
+            
+            .link-btn {
+                font-size: 1.1rem;
+                padding: 14px 20px;
+            }
+            
+            .link-btn i {
+                font-size: 1.3rem;
+                width: 26px;
+            }
+            
+            .links-list {
+                gap: 18px;
+            }
+            
+            .footer {
+                font-size: 1rem;
+                padding: 15px 0;
+            }
+            
+            .mode-toggle {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+                bottom: 25px;
+                right: 25px;
+            }
+        }
+
+        /* Smooth Scroll (for longer content if needed) */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Tooltip Styling (enhances Bootstrap tooltips) */
+        .tooltip .tooltip-inner {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            padding: 6px 10px;
+        }
