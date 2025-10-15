@@ -4,43 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/style.css">
-    <!-- Bootstrap 5.3 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Bootstrap Icons (for link and social icons) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <!-- Google Fonts: Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;family=Poppins:wght@600&amp;family=Roboto:wght@300&amp;display=swap" rel="stylesheet">
     <title>Kuril - Links Hub</title>
 </head>
-<body class="light-mode">
+<body>
     <!-- Title -->
-     <div class="countdown-container">
-        <h1 class="countdown-title">303 Days Full-Stack Mastery</h1>
+    <div class="countdown-container">
+        <h1 class="countdown-title" id="countdown-title">303 Days Full-Stack Mastery</h1>
 
         <!-- COUNTDOWN -->
         <!-- Countdown Title -->
-        <h2 class="countdown-title2">Countdown</h2>
+        <h2 class="countdown-title2" id="countdown-title2">Countdown</h2>
 
         <!-- Countdown Time -->
         <div class="countdown-timer" id="countdown-timer"></div>
 
-        <!-- Day count -->
-        <p class="countdown-subtitle" id="countdown-subtitle">Loading...</p>
-
         <!-- Progress Bar -->
+        <p class="progress-barTitle" id="progress-barTitle">Progress Bar</p>
+
+        <!-- Progress Bar value -->
         <div id="progress-bar">
             <div id="progress"></div>
             <span id="progress-label">0%</span>
         </div>
-        
+
         <!-- Monthly Material -->
-        <p class="countdown-monthlyMaterial">Loading...</p>
+        <p class="countdown-monthlyMaterial" id="countdown-monthlyMaterial">Loading...</p>
 
         <!-- Weekly Material -->
-        <p class="countdown-weeklyMaterial">Loading...</p>
+        <p class="countdown-weeklyMaterial" id="countdown-weeklyMaterial">Loading...</p>
+
+        <!-- Daily Material -->
+        <p class="countdown-dailyMaterial" id="countdown-dailyMaterial">Loading...</p>
 
         <!-- Daily message  -->
-        <p class="daily-message" id="daily-message">Loading...</p>
+        <!-- <p class="daily-message" id="daily-message">Loading...</p> -->
 
         <!-- Final Journey -->
         <div id="complete-message" class="complete-message" style="display: none;">
@@ -48,62 +49,44 @@
         </div>
     </div>
 
-    <!-- Subtle animated gradient background -->
-    <div class="animated-bg"></div>
-    
     <!-- Main content wrapper -->
-    <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center position-relative p-3 p-md-4">
-        <div class="content fade-out text-center w-100" style="max-width: 400px;">
+    <div>
+        <div>
             <!-- Profile Section -->
-            <div class="profile mb-4 animate-on-load" data-bs-toggle="tooltip" data-bs-placement="top" title="My Profile">
-                <img src="images/My-Photo-Profile.jpg" alt="My Profile Photo" class="profile-img mb-3">
-                <h1 class="name mb-2">Kuril</h1>
-                <p class="tagline text-muted">Digital Creator | Web Developer | Designer</p>
+            <div class="profile-container" title="My Profile">
+                <img src="images/My-Photo-Profile.jpg" alt="My Profile Photo" class="profile-photo">
+                <h1 class="profile-name">Kuril</h1>
+                <p class="profile-tagline">Digital Creator | Web Developer | Designer</p>
             </div>
 
             <!-- Uniform Links List -->
-            <div class="links-list animate-on-load">
-                <a href="https://your-portfolio.com" class="link-btn d-flex align-items-center" target="_blank" rel="noopener noreferrer"
-                   data-bs-toggle="tooltip" data-bs-placement="top" title="Visit my portfolio website">
+            <div class="links-list">
+                <a href="https://your-portfolio.com" class="link-btn" title="Visit my portfolio website">
                     <i class="bi bi-globe me-3"></i> Portfolio Website
                 </a>
-                <a href="https://github.com/yourusername" class="link-btn d-flex align-items-center" target="_blank" rel="noopener noreferrer"
-                   data-bs-toggle="tooltip" data-bs-placement="top" title="Follow me on GitHub">
+                <a href="https://github.com/yourusername" class="link-btn" title="Follow me on GitHub">
                     <i class="bi bi-github me-3"></i> GitHub
                 </a>
-                <a href="https://linkedin.com/in/yourusername" class="link-btn d-flex align-items-center" target="_blank" rel="noopener noreferrer"
-                   data-bs-toggle="tooltip" data-bs-placement="top" title="Connect on LinkedIn">
+                <a href="https://linkedin.com/in/yourusername" class="link-btn" title="Connect on LinkedIn">
                     <i class="bi bi-linkedin me-3"></i> LinkedIn
                 </a>
-                                <a href="https://instagram.com/yourusername" class="link-btn d-flex align-items-center" target="_blank" rel="noopener noreferrer"
-                   data-bs-toggle="tooltip" data-bs-placement="top" title="Follow me on Instagram">
+                <a href="https://instagram.com/yourusername" class="link-btn" title="Follow me on Instagram">
                     <i class="bi bi-instagram me-3"></i> Instagram
                 </a>
-                <a href="https://threads.com/@yourusername" class="link-btn d-flex align-items-center" target="_blank" rel="noopener noreferrer"
-                   data-bs-toggle="tooltip" data-bs-placement="top" title="Follow me on Threads">
+                <a href="https://threads.com/@yourusername" class="link-btn" title="Follow me on Threads">
                     <i class="bi bi-threads me-3"></i> Threads
                 </a>
-                <a href="mailto:yourname@email.com" class="link-btn d-flex align-items-center" target="_blank" rel="noopener noreferrer"
-                   data-bs-toggle="tooltip" data-bs-placement="top" title="Send me an email">
+                <a href="mailto:yourname@email.com" class="link-btn" title="Send me an email">
                     <i class="bi bi-envelope-fill me-3"></i> Email Me
                 </a>
             </div>
 
             <!-- Footer -->
-            <div class="footer mt-4 animate-on-load text-muted">
+            <div class="footer-container">
                 <small>© 2025 Kuril. All rights reserved.</small>
             </div>
         </div>
     </div>
-
-    <!-- Mode Toggle Button -->
-    <button class="mode-toggle position-fixed d-flex align-items-center justify-content-center" 
-            onclick="toggleMode()" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Light/Dark Mode">
-        <i class="bi bi-moon-stars-fill"></i>
-    </button>
-
-    <!-- Bootstrap JS + Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom JS -->
      <script src="src/script.js"></script>

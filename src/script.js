@@ -1,92 +1,61 @@
 document.addEventListener("DOMContentLoaded", function () {
-            const content = document.querySelector(".content");
-            const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-            tooltips.forEach(el => new bootstrap.Tooltip(el));
+    // Tooltips (Bootstrap)
+    const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    tooltips.forEach(el => new bootstrap.Tooltip(el));
 
-            // Smooth fade-in animation
-            setTimeout(() => content.classList.add("loaded"), 300);
+    // Smooth fade-in animation for content (if used)
+    const content = document.querySelector(".content");
+    if (content) setTimeout(() => content.classList.add("loaded"), 300);
 
-            // Mode persistence
-            const mode = localStorage.getItem("theme");
-            if (mode === "dark") {
-                document.body.classList.remove("light-mode");
-                document.body.classList.add("dark-mode");
-                updateToggleIcon("dark");
-            }
-        });
+    // Countdown elements
+    const timerElement = document.getElementById('countdown-timer');
+    const completeElement = document.getElementById('complete-message');
+    const progressElement = document.getElementById('progress');
+    const progressLabel = document.getElementById('progress-label');
+    const progressBar = document.getElementById('progress-bar');
+    const monthlyMaterialElement = document.getElementById('countdown-monthlyMaterial');
+    const weeklyMaterialElement = document.getElementById('countdown-weeklyMaterial');
+    const dailyMaterialElement = document.getElementById('countdown-dailyMaterial');
 
-        function toggleMode() {
-            const body = document.body;
-            const isDark = body.classList.contains("dark-mode");
+    // Dates
+    const startDate = new Date('September 22, 2025');
+    const targetDate = new Date('July 22, 2026');
+    const totalDays = Math.ceil((targetDate - startDate) / (1000 * 60 * 60 * 24));
 
-            if (isDark) {
-                body.classList.remove("dark-mode");
-                body.classList.add("light-mode");
-                localStorage.setItem("theme", "light");
-                updateToggleIcon("light");
-            } else {
-                body.classList.remove("light-mode");
-                body.classList.add("dark-mode");
-                localStorage.setItem("theme", "dark");
-                updateToggleIcon("dark");
-            }
-        }
-
-        function updateToggleIcon(mode) {
-            const toggleBtn = document.querySelector(".mode-toggle i");
-            if (!toggleBtn) return;
-            toggleBtn.className = mode === "dark" 
-                ? "bi bi-sun-fill" 
-                : "bi bi-moon-stars-fill";
-        }
-
-        const startDate = new Date('September 22, 2025');
-const targetDate = new Date('July 22, 2026');
-
-// Total days between start and target
-const totalDays = Math.ceil((targetDate - startDate) / (1000 * 60 * 60 * 24));
-
-const timerElement = document.getElementById('countdown-timer');
-const subtitle = document.getElementById('countdown-subtitle');
-const completeElement = document.getElementById('complete-message');
-const progressElement = document.getElementById('progress');
-const progressLabel = document.getElementById('progress-label');
-const progressBar = document.getElementById('progress-bar');
-
-// Daily messages array (lo bisa copy-paste dari dailyMessages lo)
-const dailyMessages = [
+    // Daily messages (only sample here, your full list goes here)
+    const dailyMessages = [
   // Month 1 — Web Foundations, JS Basics, Git, HCI
-  "Month 1, Week 1, Day 1 — Start strong! Learn HTML semantics and structure. Reflection: How can you make content clear for users?",
-  "Month 1, Week 1, Day 2 — Master CSS Box Model & Flexbox. Motivation: Small layouts today, big confidence tomorrow.",
-  "Month 1, Week 1, Day 3 — Practice CSS Grid. Tip: Keep user experience in mind.",
-  "Month 1, Week 1, Day 4 — Refine typography, color, spacing. Ask: Can everyone read this clearly?",
-  "Month 1, Week 1, Day 5 — Add responsive images & media queries. Motivation: Performance + usability = happy users.",
-  "Month 1, Week 1, Day 6 — Assemble landing page v1. Tip: Celebrate small victories.",
-  "Month 1, Week 1, Day 7 — Review & polish. Reflection: How did this week help your foundation?",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 1 — HTML/CSS Fundamentals, Day 1 — Start strong! Learn HTML semantics and structure. Reflection: How can you make content clear for users?",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 1 — HTML/CSS Fundamentals, Day 2 — Master CSS Box Model & Flexbox. Motivation: Small layouts today, big confidence tomorrow.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 1 — HTML/CSS Fundamentals, Day 3 — Practice CSS Grid. Tip: Keep user experience in mind.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 1 — HTML/CSS Fundamentals, Day 4 — Refine typography, color, spacing. Ask: Can everyone read this clearly?",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 1 — HTML/CSS Fundamentals, Day 5 — Add responsive images & media queries. Motivation: Performance + usability = happy users.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 1 — HTML/CSS Fundamentals, Day 6 — Assemble landing page v1. Tip: Celebrate small victories.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 1 — HTML/CSS Fundamentals, Day 7 — Review & polish. Reflection: How did this week help your foundation?",
 
-  "Month 1, Week 2, Day 8 — JS variables, types, operators. Ask: What patterns do you notice in JS?",
-  "Month 1, Week 2, Day 9 — Control flow & functions. Motivation: Consistency beats intensity.",
-  "Month 1, Week 2, Day 10 — Arrays & objects. Tip: Can you simplify your code?",
-  "Month 1, Week 2, Day 11 — DOM & events. Reflection: How do users interact with your UI?",
-  "Month 1, Week 2, Day 12 — Form validation. Motivation: Prevent errors before they happen.",
-  "Month 1, Week 2, Day 13 — Build tabs & modals. Tip: Small components = scalable apps.",
-  "Month 1, Week 2, Day 14 — Refactor & comment. Reflection: Will future-you understand this?",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 2 — JavaScript Fundamentals, Day 8 — JS variables, types, operators. Ask: What patterns do you notice in JS?",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 2 — JavaScript Fundamentals, Day 9 — Control flow & functions. Motivation: Consistency beats intensity.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 2 — JavaScript Fundamentals, Day 10 — Arrays & objects. Tip: Can you simplify your code?",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 2 — JavaScript Fundamentals, Day 11 — DOM & events. Reflection: How do users interact with your UI?",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 2 — JavaScript Fundamentals, Day 12 — Form validation. Motivation: Prevent errors before they happen.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 2 — JavaScript Fundamentals, Day 13 — Build tabs & modals. Tip: Small components = scalable apps.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 2 — JavaScript Fundamentals, Day 14 — Refactor & comment. Reflection: Will future-you understand this?",
 
-  "Month 1, Week 3, Day 15 — Git basics. Motivation: Version control = confidence.",
-  "Month 1, Week 3, Day 16 — PRs & reviews. Tip: Collaboration matters.",
-  "Month 1, Week 3, Day 17 — Prettier & ESLint. Reflection: Clean code = less stress.",
-  "Month 1, Week 3, Day 18 — Accessibility audit. Ask: Is my site usable for everyone?",
-  "Month 1, Week 3, Day 19 — Deploy to Vercel/Netlify. Motivation: Shipping early = learning faster.",
-  "Month 1, Week 3, Day 20 — Write postmortem. Reflection: What went well, what to improve?",
-  "Month 1, Week 3, Day 21 — Add design decisions to README. Tip: Document your choices.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 3 — Git and Code Quality, Day 15 — Git basics. Motivation: Version control = confidence.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 3 — Git and Code Quality, Day 16 — PRs & reviews. Tip: Collaboration matters.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 3 — Git and Code Quality, Day 17 — Prettier & ESLint. Reflection: Clean code = less stress.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 3 — Git and Code Quality, Day 18 — Accessibility audit. Ask: Is my site usable for everyone?",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 3 — Git and Code Quality, Day 19 — Deploy to Vercel/Netlify. Motivation: Shipping early = learning faster.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 3 — Git and Code Quality, Day 20 — Write postmortem. Reflection: What went well, what to improve?",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 3 — Git and Code Quality, Day 21 — Add design decisions to README. Tip: Document your choices.",
 
-  "Month 1, Week 4, Day 22 — Study HCI principles. Motivation: Think like the user.",
-  "Month 1, Week 4, Day 23 — Apply Nielsen heuristics. Reflection: Is this intuitive?",
-  "Month 1, Week 4, Day 24 — Gather user feedback. Tip: Real feedback > assumptions.",
-  "Month 1, Week 4, Day 25 — Implement improvements. Motivation: Iteration = mastery.",
-  "Month 1, Week 4, Day 26 — Finalize README. Ask: Can a stranger understand this project?",
-  "Month 1, Week 4, Day 27 — Buffer tasks. Reflection: Every step counts.",
-  "Month 1, Week 4, Day 28 — Retrospective & polish. Motivation: Celebrate Week 4 wins.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 4 — HCI Application and Launch, Day 22 — Study HCI principles. Motivation: Think like the user.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 4 — HCI Application and Launch, Day 23 — Apply Nielsen heuristics. Reflection: Is this intuitive?",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 4 — HCI Application and Launch, Day 24 — Gather user feedback. Tip: Real feedback > assumptions.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 4 — HCI Application and Launch, Day 25 — Implement improvements. Motivation: Iteration = mastery.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 4 — HCI Application and Launch, Day 26 — Finalize README. Ask: Can a stranger understand this project?",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 4 — HCI Application and Launch, Day 27 — Buffer tasks. Reflection: Every step counts.",
+  "Month 1 — Web Foundations (HTML, CSS, JS, Git, HCI Basics), Week 4 — HCI Application and Launch, Day 28 — Retrospective & polish. Motivation: Celebrate Week 4 wins.",
 
   // Month 2 — Advanced JS, Async, HTTP, Node.js + Express
   "Month 2, Week 5, Day 29 — Promises & async/await. Motivation: Asynchronous is powerful.",
@@ -423,83 +392,87 @@ const dailyMessages = [
 
 ];
 
-function formatTime(time) {
-  return time < 10 ? '0' + time : time;
-}
+    // Extract month/week/day/message from full daily message
+    function extractMaterialFromMessage(message) {
+        const match = message.match(/(Month \d+ — .*?), (Week \d+ — .*?), Day (\d+) — (.*)/s);
+        if (match) {
+            const month = match[1];
+            const week = match[2];
+            const day = `Day ${match[3]}`;
+            const msg = match[4];
+            return { month, week, day, message: msg };
+        }
+        return { month: 'Loading...', week: 'Loading...', day: 'Loading...', message: '' };
+    }
 
-function updateCountdown() {
-  const now = new Date();
-  const distance = targetDate - now;
+    function formatTime(time) {
+        return time.toString().padStart(2, '0');
+    }
 
-  // Full days elapsed
-  const fullDaysElapsed = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
-  const dayIndex = Math.min(fullDaysElapsed, dailyMessages.length - 1);
+    function updateCountdown() {
+        const now = new Date();
+        const distance = targetDate - now;
+        const fullDaysElapsed = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+        const dayIndex = Math.min(fullDaysElapsed, dailyMessages.length - 1);
 
-  // Subtitle: day count
-  subtitle.textContent = `Day ${fullDaysElapsed + 1} of ${totalDays}`;
+        const materialData = extractMaterialFromMessage(dailyMessages[dayIndex]);
 
-  // Subtitle: daily messages
-  const dailyMessageElement = document.getElementById('daily-message');
-dailyMessageElement.textContent = dailyMessages[dayIndex];
+        if (monthlyMaterialElement) monthlyMaterialElement.textContent = materialData.month;
+        if (weeklyMaterialElement) weeklyMaterialElement.textContent = materialData.week;
+        if (dailyMaterialElement) {
+            // Split message into main text and extra (Tip/Motivation/etc)
+            const parts = materialData.message.split(/(Tip|Motivation|Reflection|Ask) ?: /);
+            const mainMessage = parts[0].trim();
+            const extraMessage = parts[2] ? `${parts[1]}: ${parts[2]}` : '';
+            dailyMaterialElement.innerHTML = `${materialData.day} — ${mainMessage}${extraMessage ? `<br>${extraMessage}` : ''}`;
+        }
 
-  // Fraction of current day
-  const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const hoursToday = (now - startOfToday) / (1000 * 60 * 60);
-  const fractionToday = hoursToday / 24;
+        // Update progress bar
+        const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const hoursToday = (now - startOfToday) / (1000 * 60 * 60);
+        const fractionToday = hoursToday / 24;
+        let progressPercent = ((fullDaysElapsed + fractionToday) / totalDays) * 100;
+        progressPercent = Math.min(Math.max(progressPercent, 0), 100);
 
-  // Progress %
-  let progressPercent = ((fullDaysElapsed + fractionToday) / totalDays) * 100;
-  progressPercent = Math.min(Math.max(progressPercent, 0), 100); // clamp 0–100
-  progressElement.style.width = progressPercent + "%";
+        if (progressElement) progressElement.style.width = progressPercent + "%";
+        if (progressLabel) {
+            progressLabel.textContent = `${progressPercent.toFixed(2)}%`;
+            const barWidth = progressBar ? progressBar.offsetWidth : 0;
+            let labelPosition = (progressPercent / 100) * barWidth;
+            if (progressPercent < 5) labelPosition = 25;
+            if (progressPercent > 95) labelPosition = barWidth - 25;
+            progressLabel.style.left = `${labelPosition}px`;
+        }
 
-  // Label inside progress bar
-  const barWidth = progressBar.offsetWidth;
-  let labelPosition = (progressPercent / 100) * barWidth;
-  if (progressPercent < 5) labelPosition = 25;
-  if (progressPercent > 95) labelPosition = barWidth - 25;
-  progressLabel.style.left = `${labelPosition}px`;
-  progressLabel.textContent = `${progressPercent.toFixed(2)}%`;
+        // Countdown timer
+        if (distance <= 0) {
+            if (timerElement) timerElement.style.display = "none";
+            if (progressElement) progressElement.style.width = "100%";
+            if (progressLabel) progressLabel.textContent = "100%";
+            if (completeElement) completeElement.style.display = "block";
+            document.title = "🎉 Journey Complete | Kuril Dev";
+            return;
+        }
 
-  // Completion check
-  if (distance <= 0) {
-    timerElement.style.display = "none";
-    progressElement.style.width = "100%";
-    progressLabel.textContent = "100%";
-    completeElement.style.display = "block";
-    document.title = "🎉 Journey Complete | Kuril Dev";
-    return;
-  }
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Countdown time
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.title = `${days}d ${formatTime(hours)}h ${formatTime(minutes)}m ${formatTime(seconds)}s left | Kuril Dev`;
 
-  // Tab title
-  document.title = `${days}d ${formatTime(hours)}h ${formatTime(minutes)}m ${formatTime(seconds)}s left | Kuril Dev`;
+        if (timerElement) {
+            timerElement.innerHTML = `
+                <div class="time-unit"><span class="time-value">${days}</span><span class="time-label">Days</span></div>
+                <div class="time-unit"><span class="time-value">${formatTime(hours)}</span><span class="time-label">Hours</span></div>
+                <div class="time-unit"><span class="time-value">${formatTime(minutes)}</span><span class="time-label">Minutes</span></div>
+                <div class="time-unit"><span class="time-value">${formatTime(seconds)}</span><span class="time-label">Seconds</span></div>
+            `;
+        }
+    }
 
-  // Timer UI
-  timerElement.innerHTML = `
-    <div class="time-unit">
-      <span class="time-value">${days}</span>
-      <span class="time-label">Days</span>
-    </div>
-    <div class="time-unit">
-      <span class="time-value">${formatTime(hours)}</span>
-      <span class="time-label">Hours</span>
-    </div>
-    <div class="time-unit">
-      <span class="time-value">${formatTime(minutes)}</span>
-      <span class="time-label">Minutes</span>
-    </div>
-    <div class="time-unit">
-      <span class="time-value">${formatTime(seconds)}</span>
-      <span class="time-label">Seconds</span>
-    </div>
-  `;
-}
-
-// Start timer
-updateCountdown();
-setInterval(updateCountdown, 1000);
+    // Initial update
+    updateCountdown();
+    // Update every second
+    setInterval(updateCountdown, 1000);
+});
