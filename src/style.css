@@ -1,86 +1,88 @@
-/* ============================== RESET & BASE ============================== */
+/* ================================ Global Typography & Colors ================================ */
+
+/* ========== CSS Reset & Base Styles ========== */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box; 
 }
 
 :root {
-  /* Brand Colors */
-  --color-bg: #000;
-  --color-primary: #1e90ff;
-  --color-secondary: #0d6efd;
-  --color-tertiary: #0437f2;
-  --color-container: #1a1a1a;
-  --color-card: #222;
-  --color-light: #f5f5f5;
-  --color-semi-light: #e0e0e0;
+    /* ========== Core Brand Colors ========== */
+    --color-bg: #000111;  
+    --color-primary: #1E90FF;
+    --color-secondary: #0d6efd;
+    --color-tertiary: #0437F2;
 
-  /* Fonts */
-  --font-heading: "Poppins", sans-serif;
-  --font-body: "Roboto", sans-serif;
-  --font-logo: "Montserrat", sans-serif;
+    /* Font Colors */
+    --color-light: #f5f5f5;      
+    --color-semi-light: #e0e0e0;
 
-  /* Font Sizes */
-  --fs-sm: 1.4rem;
-  --fs-md: 1.6rem;
-  --fs-lg: 1.8rem;
-  --fs-xl: 2.4rem;
-  --fs-2xl: 3rem;
-  --fs-3xl: 3.6rem;
-  --fs-4xl: 4.8rem;
+    /* ========== Font Families and Sizes ========== */
+    --font-fm-base: 'Poppins', 'Roboto', 'Montserrat',sans-serif;
+    --font-logo: 'Montserrat', sans-serif; 
+    --font-heading: 'Poppins', sans-serif; 
+    --font-body: 'Roboto', sans-serif; 
 
-  /* Font Weight */
-  --fw-light: 300;
-  --fw-regular: 400;
-  --fw-semibold: 500;
-  --fw-bold: 700;
+    /* Font Size Scale */
+    --fs-xs: 1.2rem;  /* 12px */
+    --fs-sm: 1.4rem;  /* 14px */
+    --fs-bs: 1.6rem;  /* 16px */
+    --fs-lg: 1.8rem;  /* 18px */
+    --fs-xl: 2rem;    /* 20px */
+    --fs-2xl: 2.4rem; /* 24px */
+    --fs-3xl: 3rem;   /* 30px */
+    --fs-4xl: 3.6rem; /* 36px */
+    --fs-5xl: 4.8rem; /* 48px */
+
+    /* Line Heights */
+    --lh-tight: 1.8rem;  
+    --lh-normal: 2.4rem;  
+    --lh-relaxed: 2.8rem;
+
+    /* Font Weights */
+    --fw-light: 300;    
+    --fw-normal: 400;   
+    --fw-semi-bold: 500; 
+    --fw-bold: 700;  
+
 }
 
-html {
-  font-size: 62.5%;
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-body);
-  font-size: var(--fs-md);
-  color: var(--color-light);
-  background: var(--color-bg);
-  line-height: 1.6;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
+/* =============== Style Usage for Body and Text Elements ===============*/
+html, body {
+    font-family: var(--font-fm-base);
+    font-size: 62.5%;
+    font-weight: var(--fw-normal);
+    line-height: var(--lh-normal);
+    color: var(--color-semi-light); 
+    background: var(--color-bg); 
+    scroll-behavior: smooth;
+    max-width: 100%;
 }
 
 /* ============================== COUNTDOWN ============================== */
 .countdown-container {
-  background: var(--color-container);
-  backdrop-filter: blur(10px);
-  border-radius: 2rem;
-  padding: 3rem 2rem;
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  max-width: 900px;
+  max-width: 120rem;
   width: 100%;
-  margin-bottom: 4rem;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  min-height: 100vh;
 }
 
 .countdown-title {
   font-family: var(--font-logo);
-  font-size: var(--fs-3xl);
+  font-size: var(--fs-5xl);
   font-weight: var(--fw-bold);
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   color: var(--color-primary);
 }
 
 .countdown-title2 {
   font-family: var(--font-heading);
-  font-size: var(--fs-2xl);
+  font-size: var(--fs-5xl);
   font-weight: var(--fw-semibold);
-  margin-bottom: 3rem;
+  margin-bottom: 7rem;
 }
 
 .countdown-timer {
@@ -88,30 +90,30 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 4rem;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 }
 
 .time-unit {
   background: var(--color-secondary);
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  padding: 1rem;
+  width: 80px;
+  height: 80px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 1);
 }
 
 .time-value {
-  font-size: var(--fs-xl);
+  font-size: var(--fs-2xl);
   font-weight: var(--fw-bold);
   animation: pulse 1.5s infinite alternate ease-in-out;
 }
 
 .time-label {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
   text-transform: uppercase;
   opacity: 0.8;
 }
@@ -128,19 +130,19 @@ body {
 /* Progress bar */
 .progress-barTitle {
   font-family: var(--font-heading);
-  font-size: var(--fs-lg);
+  font-size: var(--fs-2xl);
   font-weight: var(--fw-semibold);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 #progress-bar {
   position: relative;
   height: 2.5rem;
   width: 80%;
-  max-width: 500px;
+  max-width: 50rem;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 2rem;
-  margin: 0 auto 3rem;
+  margin: 0 auto 4rem;
   overflow: hidden;
 }
 
@@ -159,13 +161,34 @@ body {
   transform: translate(-50%, -50%);
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
-  color: #fff;
+  color: var(--color-light);
   pointer-events: none;
+}
+
+.countdown-monthlyMaterial {
+  font-size: var(--fs-lg);
+  max-width: 120rem;
+  width: 80%;
+  margin: 0 auto 1.5rem;
+}
+
+.countdown-weeklyMaterial {
+  font-size: var(--fs-lg);
+  max-width: 120rem;
+  width: 80%;
+  margin: 0 auto 1.5rem;
+}
+
+.countdown-dailyMaterial {
+  font-size: var(--fs-lg);
+  max-width: 120rem;
+  width: 80%;
+  margin: 0 auto 1.5rem;
 }
 
 .complete-message {
   font-family: var(--font-logo);
-  font-size: var(--fs-2xl);
+  font-size: var(--fs-5xl);
   font-weight: var(--fw-bold);
   color: var(--color-primary);
   margin-top: 2rem;
@@ -174,7 +197,12 @@ body {
 /* ============================== PROFILE ============================== */
 .profile-container {
   text-align: center;
-  margin-bottom: 3rem;
+  margin: 4rem auto;
+  padding: 2rem 1rem;
+  max-width: 40rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .profile-photo {
@@ -184,63 +212,93 @@ body {
   object-fit: cover;
   border: 4px solid var(--color-primary);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-photo:hover {
-  transform: scale(1.05);
+  transform: scale(1.07);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.5);
 }
 
 .profile-name {
   font-family: var(--font-heading);
   font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-light);
   margin-top: 1.5rem;
 }
 
 .profile-tagline {
-  font-size: var(--fs-md);
+  font-size: var(--fs-bs);
   font-weight: var(--fw-light);
   opacity: 0.85;
+  margin-top: 0.5rem;
 }
 
 /* ============================== LINKS ============================== */
 .links-list {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.5rem;
   width: 100%;
   max-width: 450px;
-  margin: 0 auto 3rem;
+  margin: 3rem auto 4rem;
 }
 
 .link-btn {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
-  padding: 1.2rem 1.6rem;
-  border-radius: 1rem;
-  font-size: var(--fs-md);
+  padding: 1.4rem 1.8rem;
+  border-radius: 1.2rem;
+  font-size: var(--fs-bs);
+  font-weight: var(--fw-medium);
   background: linear-gradient(135deg, #0d6efd, #20c997);
   color: #fff;
   text-decoration: none;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease;
 }
 
 .link-btn:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   background: linear-gradient(135deg, #20c997, #0d6efd);
-  box-shadow: 0 4px 20px rgba(13, 110, 253, 0.4);
+  box-shadow: 0 5px 20px rgba(13, 110, 253, 0.4);
 }
 
 .link-btn i {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+}
+
+/* ============================== DAILY MATERIAL (UPDATED) ============================== */
+#countdown-dailyMaterial {
+  font-size: var(--fs-lg);
+  max-width: 100rem;
+  width: 85%;
+  margin: 2.5rem auto;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0.8rem;
+  line-height: 1.8;
+}
+
+.daily-main {
+  margin-bottom: 0.8rem;
+  font-weight: var(--fw-semi-bold);
+}
+
+.daily-extra {
+  margin-top: 0.5rem;
+  color: var(--color-semi-light);
+  font-style: italic;
 }
 
 /* ============================== FOOTER ============================== */
 .footer-container {
   text-align: center;
-  padding: 1rem 0;
+  padding: 2rem 0;
   opacity: 0.7;
   font-size: var(--fs-sm);
 }
@@ -255,31 +313,68 @@ body {
     gap: 2rem;
   }
 
+  .profile-container {
+    padding: 1.5rem;
+  }
+
   .profile-photo {
     width: 110px;
     height: 110px;
   }
 
+  .profile-name {
+    font-size: var(--fs-xl);
+  }
+
+  .profile-tagline {
+    font-size: var(--fs-sm);
+  }
+
+  .links-list {
+    gap: 1rem;
+  }
+
   .link-btn {
-    font-size: 1.4rem;
+    font-size: var(--fs-sm);
     padding: 1rem 1.2rem;
+  }
+
+  #countdown-dailyMaterial {
+    width: 90%;
+    padding: 1.2rem;
+    font-size: var(--fs-bs);
   }
 }
 
 @media (max-width: 480px) {
   .countdown-title {
-    font-size: 2.4rem;
+    font-size: 2.6rem;
   }
 
   .countdown-title2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   #progress-bar {
     width: 90%;
   }
 
+  .profile-photo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .link-btn {
+    font-size: var(--fs-xs);
+  }
+
   .link-btn i {
     font-size: 1.4rem;
+  }
+
+  #countdown-dailyMaterial {
+    margin: 1.5rem auto;
+    padding: 1rem;
+    font-size: var(--fs-sm);
   }
 }
