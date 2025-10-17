@@ -1,148 +1,312 @@
-/* ================================ Global Typography & Colors ================================ */
+/* =====================================================
+   LINKTREE CLONE — Clean Minimal Edition
+   ===================================================== */
 
-/* ========== CSS Reset & Base Styles ========== */
+/* ========== RESET & BASE ========== */
 * {
-    margin: 0;
-    padding: 0; 
-    box-sizing: border-box; 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    /* ========== Core Brand Colors ========== */
-    --color-bg: #000111;  
-    --color-primary: #1E90FF;
-    --color-secondary: #0d6efd;
-    --color-tertiary: #0437F2;
+  /* ===== Colors ===== */
+  --color-bg: #000111;
+  --color-primary: #1E90FF;
+  --color-secondary: #0d6efd;
+  --color-tertiary: #0437F2;
 
-    /* Font Colors */
-    --color-light: #f5f5f5;      
-    --color-semi-light: #e0e0e0;
+  --color-light: #f5f5f5;
+  --color-semi-light: #d9d9d9;
 
-    /* ========== Font Families and Sizes ========== */
-    --font-fm-base: 'Poppins', 'Roboto', 'Montserrat',sans-serif;
-    --font-logo: 'Montserrat', sans-serif; 
-    --font-heading: 'Poppins', sans-serif; 
-    --font-body: 'Roboto', sans-serif; 
+  /* ===== Fonts ===== */
+  --font-fm-base: 'Poppins', 'Roboto', 'Montserrat', sans-serif;
+  --font-logo: 'Montserrat', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Roboto', sans-serif;
 
-    /* Font Size Scale */
-    --fs-xs: 1.2rem;  /* 12px */
-    --fs-sm: 1.4rem;  /* 14px */
-    --fs-bs: 1.6rem;  /* 16px */
-    --fs-lg: 1.8rem;  /* 18px */
-    --fs-xl: 2rem;    /* 20px */
-    --fs-2xl: 2.4rem; /* 24px */
-    --fs-3xl: 3rem;   /* 30px */
-    --fs-4xl: 3.6rem; /* 36px */
-    --fs-5xl: 4.8rem; /* 48px */
+  /* ===== Font Scale ===== */
+  --fs-xs: 1.2rem;
+  --fs-sm: 1.4rem;
+  --fs-bs: 1.6rem;
+  --fs-lg: 1.8rem;
+  --fs-xl: 2.2rem;
+  --fs-2xl: 2.6rem;
+  --fs-3xl: 3rem;
+  --fs-4xl: 3.6rem;
+  --fs-5xl: 4.2rem;
 
-    /* Line Heights */
-    --lh-tight: 1.8rem;  
-    --lh-normal: 2.4rem;  
-    --lh-relaxed: 2.8rem;
-
-    /* Font Weights */
-    --fw-light: 300;    
-    --fw-normal: 400;   
-    --fw-semi-bold: 500; 
-    --fw-bold: 700;  
-
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
 }
 
-/* =============== Style Usage for Body and Text Elements ===============*/
-html, body {
-    font-family: var(--font-fm-base);
-    font-size: 62.5%;
-    font-weight: var(--fw-normal);
-    line-height: var(--lh-normal);
-    color: var(--color-semi-light); 
-    background: var(--color-bg); 
-    scroll-behavior: smooth;
-    max-width: 100%;
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
-/* ============================== COUNTDOWN ============================== */
-.countdown-container {
+body {
+  font-family: var(--font-fm-base);
+  background: var(--color-bg);
+  color: var(--color-light);
   text-align: center;
-  max-width: 120rem;
+  line-height: 1.6;
+  padding: 2.5rem 1.5rem;
+}
+
+/* =====================================================
+   PROFILE SECTION
+   ===================================================== */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem auto 4rem;
+  text-align: center;
+}
+
+.profile-photo {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-primary);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.profile-photo:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px var(--color-primary);
+}
+
+.profile-name {
+  font-family: var(--font-heading);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  margin-top: 1.4rem;
+  color: var(--color-light);
+}
+
+.profile-tagline {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-light);
+  opacity: 0.8;
+  margin-top: 0.6rem;
+}
+
+/* =====================================================
+   LINKS SECTION
+   ===================================================== */
+.links-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
   width: 100%;
-  margin: 0 auto;
-  padding: 5rem 2rem;
-  min-height: 100vh;
+  max-width: 38rem;
+  margin: 3.5rem auto;
+}
+
+/* ============================================
+   BETTER LINK BUTTON STYLE — Modern Neon Feel
+   ============================================ */
+.link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  width: 100%;
+  padding: 1.4rem 0;
+  border-radius: 1.2rem;
+  font-size: var(--fs-bs);
+  font-weight: var(--fw-medium);
+  color: var(--color-light);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 8px rgba(30, 144, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.link-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(30, 144, 255, 0.5), transparent);
+  transform: skewX(-20deg);
+  transition: 0.5s;
+}
+
+.link-btn:hover::before {
+  left: 125%;
+}
+
+.link-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.12), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.link-btn:hover::after {
+  opacity: 1;
+  animation: shimmer 1.8s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.link-btn:hover {
+  background: rgba(30, 144, 255, 0.15);
+  border-color: rgba(30, 144, 255, 0.6);
+  box-shadow: 0 0 25px rgba(30, 144, 255, 0.45);
+  transform: translateY(-4px);
+}
+
+.link-btn:active {
+  transform: scale(0.97);
+}
+
+.link-btn i {
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+}
+
+.link-btn:hover i {
+  transform: scale(1.2);
+}
+
+/* =====================================================
+   COUNTDOWN SECTION
+   ===================================================== */
+.countdown-container {
+  margin: 4rem auto 3rem;
+  padding: 0 1rem;
 }
 
 .countdown-title {
   font-family: var(--font-logo);
-  font-size: var(--fs-5xl);
-  font-weight: var(--fw-bold);
-  margin-bottom: 4rem;
+  font-size: var(--fs-3xl);
   color: var(--color-primary);
+  font-weight: var(--fw-bold);
+  margin-bottom: 1rem;
 }
 
 .countdown-title2 {
   font-family: var(--font-heading);
-  font-size: var(--fs-5xl);
-  font-weight: var(--fw-semibold);
-  margin-bottom: 7rem;
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  margin-bottom: 2.5rem;
+  color: var(--color-semi-light);
 }
 
 .countdown-timer {
   display: flex;
   justify-content: center;
+  gap: 1.4rem;
   flex-wrap: wrap;
-  gap: 4rem;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 .time-unit {
-  background: var(--color-secondary);
+  position: relative;
+  border: 1.5px solid var(--color-secondary);
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  padding: 2rem;
+  width: 68px;
+  height: 68px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 1);
+  color: var(--color-light);
+  transition: all 0.4s ease;
+  background: rgba(13, 110, 253, 0.08);
+  overflow: hidden;
+}
+
+.time-unit:hover {
+  transform: scale(1.12) rotate(4deg);
+  box-shadow: 0 0 25px rgba(13, 110, 253, 0.6),
+              0 0 40px rgba(4, 55, 242, 0.4);
+  border-color: transparent;
+  background: linear-gradient(135deg, rgba(30,144,255,0.3), rgba(4,55,242,0.3));
+}
+
+.time-unit::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(30,144,255,0.4), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.time-unit:hover::after {
+  opacity: 1;
+  animation: pulseGlow 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes borderPulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(13, 110, 253, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(13, 110, 253, 0.6);
+  }
+}
+
+.time-unit {
+  animation: borderPulse 3s infinite ease-in-out;
 }
 
 .time-value {
-  font-size: var(--fs-2xl);
+  font-size: var(--fs-bs);
   font-weight: var(--fw-bold);
-  animation: pulse 1.5s infinite alternate ease-in-out;
 }
 
 .time-label {
   font-size: var(--fs-xs);
+  opacity: 0.7;
   text-transform: uppercase;
-  opacity: 0.8;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.2);
-  }
-}
-
-/* Progress bar */
-.progress-barTitle {
-  font-family: var(--font-heading);
-  font-size: var(--fs-2xl);
-  font-weight: var(--fw-semibold);
-  margin-bottom: 2rem;
-}
-
+/* Progress Bar */
 #progress-bar {
   position: relative;
-  height: 2.5rem;
-  width: 80%;
-  max-width: 50rem;
+  height: 2rem;
+  width: 90%;
+  max-width: 40rem;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 2rem;
-  margin: 0 auto 4rem;
+  margin: 2rem auto 3rem;
   overflow: hidden;
 }
 
@@ -160,221 +324,275 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
-  color: var(--color-light);
-  pointer-events: none;
-}
-
-.countdown-monthlyMaterial {
-  font-size: var(--fs-lg);
-  max-width: 120rem;
-  width: 80%;
-  margin: 0 auto 1.5rem;
-}
-
-.countdown-weeklyMaterial {
-  font-size: var(--fs-lg);
-  max-width: 120rem;
-  width: 80%;
-  margin: 0 auto 1.5rem;
-}
-
-.countdown-dailyMaterial {
-  font-size: var(--fs-lg);
-  max-width: 120rem;
-  width: 80%;
-  margin: 0 auto 1.5rem;
-}
-
-.complete-message {
-  font-family: var(--font-logo);
-  font-size: var(--fs-5xl);
-  font-weight: var(--fw-bold);
-  color: var(--color-primary);
-  margin-top: 2rem;
-}
-
-/* ============================== PROFILE ============================== */
-.profile-container {
-  text-align: center;
-  margin: 4rem auto;
-  padding: 2rem 1rem;
-  max-width: 40rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-.profile-photo {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--color-primary);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.profile-photo:hover {
-  transform: scale(1.07);
-  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.5);
-}
-
-.profile-name {
-  font-family: var(--font-heading);
-  font-size: var(--fs-2xl);
-  font-weight: var(--fw-bold);
-  color: var(--color-light);
-  margin-top: 1.5rem;
-}
-
-.profile-tagline {
-  font-size: var(--fs-bs);
-  font-weight: var(--fw-light);
-  opacity: 0.85;
-  margin-top: 0.5rem;
-}
-
-/* ============================== LINKS ============================== */
-.links-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  width: 100%;
-  max-width: 450px;
-  margin: 3rem auto 4rem;
-}
-
-.link-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1.4rem 1.8rem;
-  border-radius: 1.2rem;
-  font-size: var(--fs-bs);
   font-weight: var(--fw-medium);
-  background: linear-gradient(135deg, #0d6efd, #20c997);
-  color: #fff;
-  text-decoration: none;
-  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s ease;
+  color: var(--color-light);
 }
 
-.link-btn:hover {
-  transform: translateY(-4px);
-  background: linear-gradient(135deg, #20c997, #0d6efd);
-  box-shadow: 0 5px 20px rgba(13, 110, 253, 0.4);
-}
-
-.link-btn i {
-  font-size: 1.8rem;
-}
-
-/* ============================== DAILY MATERIAL (UPDATED) ============================== */
-#countdown-dailyMaterial {
-  font-size: var(--fs-lg);
-  max-width: 100rem;
-  width: 85%;
-  margin: 2.5rem auto;
-  padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-left: 4px solid var(--color-primary);
-  border-radius: 0.8rem;
-  line-height: 1.8;
-}
-
-.daily-main {
-  margin-bottom: 0.8rem;
-  font-weight: var(--fw-semi-bold);
-}
-
-.daily-extra {
-  margin-top: 0.5rem;
+/* Text Materials */
+.countdown-monthlyMaterial,
+.countdown-weeklyMaterial,
+.countdown-dailyMaterial {
+  font-size: var(--fs-sm);
+  width: 90%;
+  margin: 0 auto 1rem;
   color: var(--color-semi-light);
-  font-style: italic;
 }
 
-/* ============================== FOOTER ============================== */
+/* ============================================
+    Popup Position 
+   ============================================ */
+.announcement-popup {
+  position: fixed;
+  top: 25px;
+  left: 50%;
+  transform: translate(-50%, -20px);
+  background: rgba(15, 15, 25, 0.9);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.6s ease;
+  width: clamp(260px, 70%, 480px);
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.announcement-popup.show {
+  opacity: 1;
+  transform: translate(-50%, 0); 
+  border-bottom: 2px solid var(--color-primary);
+  box-shadow: 0 4px 25px rgba(30, 144, 255, 0.3);
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translate(-50%, -40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: var(--color-primary, #1E90FF);
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
 .footer-container {
   text-align: center;
-  padding: 2rem 0;
-  opacity: 0.7;
+  color: var(--color-semi-light);
   font-size: var(--fs-sm);
+  padding: 3rem 0 1.5rem;
+  opacity: 0.8;
 }
 
-/* ============================== RESPONSIVE ============================== */
-@media (max-width: 768px) {
-  .countdown-container {
-    padding: 2rem 1rem;
+/* Fade-in Animation */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-
-  .countdown-timer {
-    gap: 2rem;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  .profile-container {
-    padding: 1.5rem;
-  }
+.profile-container,
+.links-list,
+.countdown-container,
+.footer-container {
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
 
+.profile-container { animation-delay: 0.1s; }
+.links-list { animation-delay: 0.3s; }
+.countdown-container { animation-delay: 0.5s; }
+.footer-container { animation-delay: 0.7s; }
+
+/* =====================================================
+   MEDIA QUERIES
+   ===================================================== */
+
+/* ---------- min-width: 480px ---------- */
+@media (min-width: 480px) {
   .profile-photo {
-    width: 110px;
-    height: 110px;
+    width: 12rem;
+    height: 12rem;
   }
 
   .profile-name {
-    font-size: var(--fs-xl);
-  }
-
-  .profile-tagline {
-    font-size: var(--fs-sm);
+    font-size: var(--fs-3xl);
   }
 
   .links-list {
-    gap: 1rem;
+    max-width: 40rem;
   }
 
   .link-btn {
-    font-size: var(--fs-sm);
-    padding: 1rem 1.2rem;
-  }
-
-  #countdown-dailyMaterial {
-    width: 90%;
-    padding: 1.2rem;
     font-size: var(--fs-bs);
+    padding: 1.5rem 0;
   }
-}
 
-@media (max-width: 480px) {
   .countdown-title {
-    font-size: 2.6rem;
+    font-size: var(--fs-4xl);
   }
 
   .countdown-title2 {
-    font-size: 2rem;
+    font-size: var(--fs-xl);
   }
+}
 
-  #progress-bar {
-    width: 90%;
+/* ---------- min-width: 768px (tablet/desktop) ---------- */
+@media (min-width: 768px) {
+  body {
+    padding: 4rem 0;
   }
 
   .profile-photo {
-    width: 90px;
-    height: 90px;
+    width: 14rem;
+    height: 14rem;
+  }
+
+  .link-btn {
+    font-size: var(--fs-lg);
+    padding: 1.6rem 0;
+  }
+
+  .links-list {
+    gap: 1.8rem;
+    max-width: 42rem;
+  }
+
+  .countdown-title {
+    font-size: var(--fs-5xl);
+  }
+
+  .countdown-title2 {
+    font-size: var(--fs-2xl);
+  }
+
+  .time-unit {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* ---------- max-width: 378px (small phone) ---------- */
+@media (max-width: 378px) {
+  .profile-photo {
+    width: 8.5rem;
+    height: 8.5rem;
+  }
+
+  .profile-name {
+    font-size: var(--fs-lg);
+  }
+
+  .profile-tagline {
+    font-size: var(--fs-xs);
   }
 
   .link-btn {
     font-size: var(--fs-xs);
+    padding: 1.2rem 0;
   }
 
   .link-btn i {
     font-size: 1.4rem;
   }
 
-  #countdown-dailyMaterial {
-    margin: 1.5rem auto;
-    padding: 1rem;
+  .countdown-title {
+    font-size: var(--fs-lg);
+  }
+
+  .countdown-title2 {
     font-size: var(--fs-sm);
+  }
+
+  #progress-bar {
+    width: 95%;
+  }
+
+  .footer-container {
+    font-size: var(--fs-xs);
+  }
+}
+
+/* =====================================================
+   === ADDITIONAL POLISH ===
+   ===================================================== */
+
+/* Smooth Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-secondary), var(--color-tertiary));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Enhanced Profile Glow */
+.profile-photo:hover {
+  box-shadow: 0 0 30px rgba(30, 144, 255, 0.5),
+              0 0 60px rgba(4, 55, 242, 0.4);
+}
+
+/* Smooth Font Rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Entrance Animation for Popup */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Global Transition Smoothness */
+* {
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Large Screen Padding */
+@media (min-width: 1024px) {
+  body {
+    padding: 5rem 0;
   }
 }
