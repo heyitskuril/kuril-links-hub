@@ -407,6 +407,14 @@ body {
   opacity: 0.8;
 }
 
+.profile-container,
+.links-list,
+.countdown-container,
+.footer-container {
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+
 /* Fade-in Animation */
 @keyframes fadeUp {
   0% {
@@ -419,14 +427,6 @@ body {
   }
 }
 
-.profile-container,
-.links-list,
-.countdown-container,
-.footer-container {
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-}
-
 .profile-container { animation-delay: 0.1s; }
 .links-list { animation-delay: 0.3s; }
 .countdown-container { animation-delay: 0.5s; }
@@ -434,13 +434,13 @@ body {
 
 /* ======================
     MEDIA QUERIES
-   ======================= */
+   ====================== */
 
 /* ---------- min-width: 480px ---------- */
 @media (min-width: 480px) {
   .profile-photo {
     width: 12rem;
-    height: 12rem;
+    height: 12rem
   }
 
   .profile-name {
@@ -516,7 +516,7 @@ body {
   }
 
   .link-btn {
-    font-size: var(--fs-xs);
+    font-size: var(--fs-sm);
     padding: 1.2rem 0;
   }
 
@@ -537,7 +537,7 @@ body {
   }
 
   .footer-container {
-    font-size: var(--fs-xs);
+    font-size: var(--fs-sm);
   }
 }
 

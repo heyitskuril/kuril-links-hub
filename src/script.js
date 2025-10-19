@@ -422,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Month 11 — Recap & Graduation, Week 44 — Graduation Showcase and Wrap Up, Day 305 — Reflection & Retrospective. Motivation: Celebrate wins & learn lessons.",
         "Month 11 — Recap & Graduation, Week 44 — Graduation Showcase and Wrap Up, Day 306 — Portfolio Polish. Tip: Optimize presentation for recruiters & peers.",
         "Month 11 — Recap & Graduation, Week 44 — Graduation Showcase and Wrap Up, Day 307 — Resume Updates. Reflection: Keep it concise & impact-driven.",
-        "Month 11 — Recap & Graduation, Week 44 — Graduation Showcase and Wrap Up, Day 308 — Graduation Wrap-Up. Motivation: You did it! Full-stack journey completed! 🎉",
+        "Month 11 — Recap & Graduation, Week 44 — Graduation Showcase and Wrap Up, Day 308 — Graduation Wrap-Up. Motivation: I did it! Full-stack journey completed!",
     ];
 
     function extractMaterialFromMessage(message) {
@@ -478,7 +478,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (progressElement) progressElement.style.width = "100%";
             if (progressLabel) progressLabel.textContent = "100%";
             if (completeElement) completeElement.style.display = "block";
-            document.title = "🎉 Journey Completed | Kuril Dev";
+            document.title = "Journey Completed | Kuril Junior Full-Stack Developer";
             return;
         }
 
@@ -491,10 +491,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (timerElement) {
             timerElement.innerHTML = `
-                <div class="time-unit"><span class="time-value">${days}</span><span class="time-label">Days</span></div>
-                <div class="time-unit"><span class="time-value">${formatTime(hours)}</span><span class="time-label">Hours</span></div>
-                <div class="time-unit"><span class="time-value">${formatTime(minutes)}</span><span class="time-label">Minutes</span></div>
-                <div class="time-unit"><span class="time-value">${formatTime(seconds)}</span><span class="time-label">Seconds</span></div>
+                <div class="time-unit">
+                    <span class="time-value">${days}</span>
+                    <span class="time-label">Days</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value">${formatTime(hours)}</span>
+                    <span class="time-label">Hours</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value">${formatTime(minutes)}</span>
+                    <span class="time-label">Minutes</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value">${formatTime(seconds)}</span>
+                    <span class="time-label">Seconds</span>
+                </div>
             `;
         }
     }
@@ -506,82 +518,15 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => popup.classList.add("show"), 600);
     });
 
-    // ===== Announcement Popup Logic =====
     const announcement = document.getElementById("announcement-popup");
     const announcementText = document.getElementById("announcement-text");
     const closeAnnouncement = document.getElementById("close-announcement");
 
-    const kurilUpdates = [
-    // — Month 1: Foundations
-    "Starting from zero to full-stack, one commit at a time.",
-    "Focus on fundamentals. HTML, CSS, and JavaScript are your core tools.",
-    "Logic first, syntax later. A strong foundation beats shortcuts.",
-    "Every line of code today builds the system of tomorrow.",
+    const kurilUpdates = "Lorem ipsum, Assalamualaikum"
 
-    // — Month 2: Frontend Growth
-    "UI is not decoration. It’s communication.",
-    "Master structure before style. Design follows logic.",
-    "CSS is organized creativity. Treat it like architecture.",
-    "Understanding beats memorization. Build, test, and repeat.",
+    const greetingMessage = kurilUpdates;
 
-    // — Month 3: Advanced JavaScript
-    "Asynchronous thinking is what makes the web alive.",
-    "Clean code is a form of respect — for yourself and others.",
-    "Debugging is the best teacher. Errors are lessons in disguise.",
-    "Every console log is a step toward understanding.",
-
-    // — Month 4: Backend Basics
-    "The backend is where logic meets structure.",
-    "Databases exist to remember what users can’t.",
-    "APIs are conversations between systems — design them clearly.",
-    "Security isn’t optional; it’s responsibility.",
-
-    // — Month 5: Integration
-    "Full-stack means full ownership — every detail matters.",
-    "Connecting client and server is about clarity, not just code.",
-    "A reliable system starts with predictable data flow.",
-    "Good architecture reduces noise and increases focus.",
-
-    // — Month 6: Projects and Practice
-    "Projects define skill. Start small, finish often.",
-    "The best way to learn is to build something that matters.",
-    "Every project reflects your logic, discipline, and growth.",
-    "Progress happens when you fix what you once didn’t understand.",
-
-    // — Month 7: Deployment and DevOps
-    "Deployment is not the finish line — it’s the start of real testing.",
-    "Automate what you repeat. Focus on what improves the product.",
-    "Clean deployment pipelines are silent productivity.",
-    "Monitor, iterate, and evolve — systems grow like developers do.",
-
-    // — Month 8: System Design
-    "Design for change, not for perfection.",
-    "Architecture is the art of balancing trade-offs.",
-    "Simplicity scales better than complexity.",
-    "System thinking is long-term problem solving.",
-
-    // — Month 9: Optimization and DSA
-    "Data structures shape the logic; algorithms drive the speed.",
-    "Efficient code is not fast — it’s smart.",
-    "Readable code lasts longer than clever code.",
-    "Understanding patterns builds intuition.",
-
-    // — Month 10: Portfolio and Career Prep
-    "Your portfolio is proof of discipline, not just design.",
-    "A good GitHub tells a story of progress, not perfection.",
-    "Let your resume describe outcomes, not activities.",
-    "Show your work. Every project is a conversation starter.",
-
-    // — Month 11: Reflection and Growth
-    "Reflect, refine, and rebuild stronger.",
-    "You don’t finish a journey; you evolve through it.",
-    "Progress is measured by consistency, not speed.",
-    "The best developers keep learning long after the course ends."
-    ];
-
-    const randomMessage = kurilUpdates[Math.floor(Math.random() * kurilUpdates.length)];
-
-    announcementText.textContent = randomMessage;
+    announcementText.textContent = greetingMessage;
 
     setTimeout(() => {
     announcement.classList.add("show");
