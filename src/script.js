@@ -92,14 +92,14 @@ document.addEventListener("DOMContentLoaded", function () {
         "Month 2 — Advanced JS, Async, HTTP, Node.js + Express, Week 8 — Frontend Integration, Day 56 — Retrospective & learning notes. Tip: Never stop reviewing.",
 
         // Month 3 — Databases & Security; Project 1: Auth + Dashboard
-        // Week 9 — MongoDB Fundamentals
-        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — MongoDB Fundamentals, Day 57 — MongoDB CRUD basics. Motivation: Every query counts.",
-        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — MongoDB Fundamentals, Day 58 — Create & test single-field indexes. Reflection: Indexes make life faster.",
-        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — MongoDB Fundamentals, Day 59 — Aggregation pipelines. Tip: Process data efficiently.",
-        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — MongoDB Fundamentals, Day 60 — Design user schema with constraints. Motivation: Good design = less bugs.",
-        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — MongoDB Fundamentals, Day 61 — Unique indexes & audit fields. Reflection: Data integrity matters.",
-        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — MongoDB Fundamentals, Day 62 — Create seed & migration scripts. Tip: Automate repetitive tasks.",
-        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — MongoDB Fundamentals, Day 63 — Validate schema with sample data. Motivation: Test before trusting.",
+        // Week 9 — PostgreSQL Fundamentals
+        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — PostgreSQL Fundamentals, Day 57 — CRUD with PostgreSQL basics. Motivation: Every query counts.",
+        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — PostgreSQL Fundamentals, Day 58 — Set up Drizzle ORM & schema design. Reflection: Structure defines stability.",
+        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — PostgreSQL Fundamentals, Day 59 — Indexing & query optimization. Tip: Speed is built, not found.",
+        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — PostgreSQL Fundamentals, Day 60 — Multi-table relationships & joins. Motivation: Connections power insight.",
+        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — PostgreSQL Fundamentals, Day 61 — Constraints, triggers & audit fields. Reflection: Integrity is everything.",
+        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — PostgreSQL Fundamentals, Day 62 — Seed & migration scripts. Tip: Automate the boring stuff.",
+        "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 9 — PostgreSQL Fundamentals, Day 63 — Query patterns & transactions. Motivation: Consistency builds trust.",
 
         // Week 10 — Authentication E2E
         "Month 3 — Databases & Security; Project 1: Auth + Dashboard, Week 10 — Authentication E2E, Day 64 — Hash passwords with bcrypt/argon2. Reflection: Security is priority.",
