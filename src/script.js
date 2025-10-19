@@ -478,7 +478,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (progressElement) progressElement.style.width = "100%";
             if (progressLabel) progressLabel.textContent = "100%";
             if (completeElement) completeElement.style.display = "block";
-            document.title = "Journey Completed | Kuril Junior Full-Stack Developer";
+            document.title = "Kuril Junior Full-Stack Developer";
             return;
         }
 
