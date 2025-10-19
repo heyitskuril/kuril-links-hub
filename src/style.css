@@ -1,5 +1,5 @@
 /* =====================================================
-   LINKTREE CLONE — Clean Minimal Edition
+                  LINKTREE CLONE
    ===================================================== */
 
 /* ========== RESET & BASE ========== */
@@ -45,6 +45,8 @@
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -59,6 +61,7 @@ body {
 /* ============================ 
     PROFILE SECTION 
 ============================= */
+
 .profile-container {
   display: flex;
   flex-direction: column;
@@ -99,6 +102,7 @@ body {
 /* ================================ 
     LINKS SECTION 
 =================================== */
+
 .links-list {
   display: flex;
   flex-direction: column;
@@ -112,6 +116,7 @@ body {
 /* =========================== 
     LINK BUTTON STYLE 
 ============================== */
+
 .link-btn {
   display: flex;
   align-items: center;
@@ -193,8 +198,9 @@ body {
 }
 
 /* ============================
-   COUNTDOWN SECTION
-   ============================ */
+    COUNTDOWN SECTION
+=============================== */
+
 .countdown-container {
   margin: 4rem auto 3rem;
   padding: 0 1rem;
@@ -298,7 +304,6 @@ body {
   text-transform: uppercase;
 }
 
-/* Progress Bar */
 #progress-bar {
   position: relative;
   height: 2rem;
@@ -328,7 +333,6 @@ body {
   color: var(--color-light);
 }
 
-/* Text Materials */
 .countdown-monthlyMaterial,
 .countdown-weeklyMaterial,
 .countdown-dailyMaterial {
@@ -340,7 +344,8 @@ body {
 
 /* ========================
     Popup Position 
-   ======================== */
+=========================== */
+
 .announcement-popup {
   position: fixed;
   top: 25px;
@@ -379,7 +384,6 @@ body {
   }
 }
 
-
 .close-btn {
   position: absolute;
   top: 6px;
@@ -397,8 +401,9 @@ body {
 }
 
 /* =======================
-   FOOTER
-   ======================= */
+    FOOTER
+========================== */
+
 .footer-container {
   text-align: center;
   color: var(--color-semi-light);
@@ -415,7 +420,6 @@ body {
   animation: fadeUp 0.8s ease forwards;
 }
 
-/* Fade-in Animation */
 @keyframes fadeUp {
   0% {
     opacity: 0;
@@ -545,7 +549,6 @@ body {
     === ADDITIONAL POLISH ===
 ===================================== */
 
-/* Smooth Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -561,19 +564,16 @@ body {
   background: var(--color-primary);
 }
 
-/* Enhanced Profile Glow */
 .profile-photo:hover {
   box-shadow: 0 0 30px rgba(30, 144, 255, 0.5),
               0 0 60px rgba(4, 55, 242, 0.4);
 }
 
-/* Smooth Font Rendering */
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Entrance Animation for Popup */
 @keyframes slideDown {
   0% {
     transform: translateY(-40px);
@@ -585,12 +585,10 @@ body {
   }
 }
 
-/* Global Transition Smoothness */
 * {
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Large Screen Padding */
 @media (min-width: 1024px) {
   body {
     padding: 5rem 0;
